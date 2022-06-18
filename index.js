@@ -29,6 +29,15 @@ const gotchi_list = process.env.TOKEN_IDS
 // Aavegotchi contract address
 const gotchi_address = "0x86935F11C86623deC8a25696E1C19a8659CbF95d"
 
+// Delay function
+const delay = time => new Promise(res => setTimeout(res,time));
+
+// Return the date as a string
+const prettyDate = () => {
+    const date = new Date().toISOString()
+    return `${magenta}${date}: ${reset}`
+}
+
 // Check we got a valid wallet_key
 if(wallet_key===null || wallet_key.length!=64) {
     console.log(`${prettyDate()}Wallet key is invalid.  It should be 64 characters in length`)
@@ -49,14 +58,7 @@ const gotchi_contract = new ethers.Contract(
     provider
 );
 
-// Delay function
-const delay = time => new Promise(res => setTimeout(res,time));
 
-// Return the date as a string
-const prettyDate = () => {
-    const date = new Date().toISOString()
-    return `${magenta}${date}: ${reset}`
-}
 
 // Get gas fees
 const getGasFees = async () => {
