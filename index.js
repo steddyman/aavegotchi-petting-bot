@@ -58,8 +58,6 @@ const gotchi_contract = new ethers.Contract(
     provider
 );
 
-
-
 // Get gas fees
 const getGasFees = async () => {
     try {
@@ -120,7 +118,7 @@ async function main()
                 maxFeePerGas: _gas_data.maxFeePerGas.toString(),                   // Max gas fee
                 maxPriorityFeePerGas: _gas_data.maxPriorityFeePerGas.toString()    // Max priority fee                
             })
-            console.log(`${prettyDate()}Send transaction returned txn hash ${_txn.hash}`)
+            console.log(`${prettyDate()}Send transaction returned txn hash ${yellow}${_txn.hash}${reset}`)
             const _receipt = await _txn.wait()
             // This is entered if the transaction receipt indicates success
             console.log(`${prettyDate()}${green}Created Pet transaction with hash ${cyan}${explorer}/tx/${_receipt.transactionHash}${reset}`)    
